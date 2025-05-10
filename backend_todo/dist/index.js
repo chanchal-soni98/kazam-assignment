@@ -13,8 +13,11 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.use('/api', taskRoutes_1.default);
+app.use("/api", taskRoutes_1.default);
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "Kazam API" });
+});
 (0, server_1.default)();
 app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+    console.log("Server is running on port 3000");
 });
