@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import axios from "axios";
-import { API_BASE_URL, MQTT_PUB_TOPIC, MQTT_SUB_TOPIC, MQTT_URL } from "./constant.ts";
+import {
+  API_BASE_URL,
+  MQTT_PUB_TOPIC,
+  MQTT_SUB_TOPIC,
+  MQTT_URL,
+} from "./constant.ts";
 import InputBox from "./Components/InputBox.tsx";
 import NotesList from "./Components/NotesList.tsx";
 
@@ -9,6 +14,7 @@ interface Note {
   task: string;
   createdAt: string;
 }
+
 const client = mqtt.connect(MQTT_URL);
 
 function App() {
@@ -62,10 +68,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white p-4">
-      <div className="bg-white shadow-md rounded-md p-6 w-[759px] h-[742px] top-[273px]">
+    <div className="min-h-screen flex items-center justify-center bg-white px-4 py-8">
+      <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6 space-y-4">
         <InputBox note={note} setNote={setNote} addNote={addNote} />
-        <h2 className="font-semibold mb-2 text-black font-inter font-semibold text-[30px] leading-[36px] mb-2 mt-2">Notes</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-black">Notes</h2>
         <NotesList notes={notes} />
       </div>
     </div>
